@@ -2,8 +2,11 @@
 node_modules/
 __pycache__/
 *.pyc
+*.pyo
 .venv/
 venv/
+*.egg-info/
+*.egg
 
 # Environment files
 .env
@@ -16,20 +19,35 @@ build/
 .next/
 .expo/
 
+# Python
+*.so
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+
 # IDE
 .vscode/
 .idea/
 *.swp
 *.swo
+*.iml
 
 # OS
 .DS_Store
 Thumbs.db
+*.tmp
 
 # Test coverage
 coverage/
 htmlcov/
 .coverage
+.coverage.*
+
+# Docker
+*.log
+
+# Supabase local
+supabase/.temp/
 
 # AI assistant configs (local development tools)
 .claude/

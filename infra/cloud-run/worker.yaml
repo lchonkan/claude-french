@@ -1,0 +1,81 @@
+# Cloud Run service configuration for the Worker (T134)
+#
+# The worker receives async job requests from Cloud Tasks and runs
+# AI evaluation jobs (writing eval, pronunciation eval, lesson generation,
+# difficulty recalibration, cultural content generation).
+#
+# Deploy with:
+#   gcloud run services replace infra/cloud-run/worker.yaml --region=europe-west1
+
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: french-learning-worker
+  labels:
+    cloud.googleapis.com/location: europe-west1
+  annotations:
+    run.googleapis.com/ingress: internal
+    run.googleapis.com/launch-stage: GA
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: "0"
+        autoscaling.knative.dev/maxScale: "5"
+        run.googleapis.com/cpu-throttling: "false"
+        run.googleapis.com/execution-environment: gen2
+    spec:
+      containerConcurrency: 10
+      timeoutSeconds: 600
+      serviceAccountName: french-learning-worker-sa@${PROJECT_ID}.iam.gserviceaccount.com
+      containers:
+        - image: gcr.io/${PROJECT_ID}/french-learning-worker:latest
+          ports:
+            - containerPort: 8001
+          resources:
+            limits:
+              cpu: "2"
+              memory: 2Gi
+          env:
+            - name: ENVIRONMENT
+              value: production
+            - name: PORT
+              value: "8001"
+            - name: SUPABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: supabase-url
+                  key: latest
+            - name: SUPABASE_SERVICE_ROLE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: supabase-service-role-key
+                  key: latest
+            - name: HF_API_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: hf-api-token
+                  key: latest
+            - name: GOOGLE_GEMINI_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gemini-api-key
+                  key: latest
+            - name: GOOGLE_CLOUD_PROJECT
+              value: ${PROJECT_ID}
+          startupProbe:
+            httpGet:
+              path: /health
+              port: 8001
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8001
+            periodSeconds: 30
+            failureThreshold: 3
+  traffic:
+    - percent: 100
+      latestRevision: true

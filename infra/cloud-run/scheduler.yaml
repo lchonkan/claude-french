@@ -1,0 +1,55 @@
+# Cloud Scheduler cron configurations (T127)
+#
+# These jobs call internal cron endpoints on the API service.
+# Each job is secured by Cloud Run's built-in IAM authentication;
+# the scheduler service account must have roles/run.invoker on
+# the API Cloud Run service.
+#
+# Deploy with:
+#   gcloud scheduler jobs create http <job-name> \
+#     --schedule="<schedule>" \
+#     --time-zone="UTC" \
+#     --uri="<uri>" \
+#     --http-method=POST \
+#     --oidc-service-account-email=<sa>@<project>.iam.gserviceaccount.com
+
+jobs:
+  - name: daily-challenges
+    schedule: "0 3 * * *"
+    timeZone: "UTC"
+    httpTarget:
+      uri: ${API_URL}/api/v1/admin/internal/cron/daily-challenges
+      httpMethod: POST
+    description: >
+      Generate daily challenges for active users.
+      Runs at 03:00 UTC every day.
+
+  - name: streak-reset
+    schedule: "0 4 * * *"
+    timeZone: "UTC"
+    httpTarget:
+      uri: ${API_URL}/api/v1/admin/internal/cron/streak-reset
+      httpMethod: POST
+    description: >
+      Reset streaks for users with no activity yesterday.
+      Runs at 04:00 UTC every day.
+
+  - name: srs-batch
+    schedule: "0 5 * * *"
+    timeZone: "UTC"
+    httpTarget:
+      uri: ${API_URL}/api/v1/admin/internal/cron/srs-batch
+      httpMethod: POST
+    description: >
+      Pre-compute next-day SRS review queues for all users.
+      Runs at 05:00 UTC every day.
+
+  - name: ai-digest
+    schedule: "0 6 * * 1"
+    timeZone: "UTC"
+    httpTarget:
+      uri: ${API_URL}/api/v1/admin/internal/cron/ai-digest
+      httpMethod: POST
+    description: >
+      Aggregate weekly AI metrics into a digest.
+      Runs at 06:00 UTC every Monday.

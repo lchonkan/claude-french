@@ -1,0 +1,14 @@
+{
+  "terms": {
+    "lesson": { "canonical": "leccion", "prohibited": ["clase", "curso"] },
+    "exercise": { "canonical": "ejercicio", "prohibited": ["actividad", "tarea"] },
+    "score": { "canonical": "puntuacion", "prohibited": ["nota", "calificacion"] },
+    "level": { "canonical": "nivel", "prohibited": ["grado", "etapa"] },
+    "review": { "canonical": "repaso", "prohibited": ["revision", "estudio"] },
+    "practice": { "canonical": "practica", "prohibited": ["entrenamiento"] },
+    "dashboard": { "canonical": "panel", "prohibited": ["tablero", "inicio"] },
+    "profile": { "canonical": "perfil", "prohibited": ["cuenta", "usuario"] },
+    "settings": { "canonical": "ajustes", "prohibited": ["configuracion", "opciones"] },
+    "progress": { "canonical": "progreso", "prohibited": ["avance", "rendimiento"] }
+  }
+}
