@@ -1,0 +1,55 @@
+# Cloud Build CI/CD pipeline (T133)
+#
+# This pipeline:
+# 1. Lints Python code with ruff
+# 2. Runs Python tests with coverage (>=80% required)
+# 3. Lints, builds, and tests the web frontend
+# 4. Builds Docker images for the API and worker services
+#
+# Trigger: push to main branch or pull request
+
+steps:
+  # Step 1: Lint Python code
+  - name: 'python:3.12'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        pip install ruff mypy
+        cd services && ruff check . && cd ..
+
+  # Step 2: Run Python tests with coverage
+  - name: 'python:3.12'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        pip install -e services/shared[dev] -e services/api[dev] -e services/worker[dev]
+        cd services/api && pytest --cov=src --cov-report=term-missing --cov-fail-under=80
+        cd ../worker && pytest --cov=src --cov-report=term-missing --cov-fail-under=80
+
+  # Step 3: Frontend lint, build, and test
+  - name: 'node:20'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        cd web && npm ci && npm run lint && npm run build && npm run test:coverage
+
+  # Step 4: Build API Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/french-learning-api', '-f', 'services/api/Dockerfile', '.']
+
+  # Step 5: Build Worker Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/french-learning-worker', '-f', 'services/worker/Dockerfile', '.']
+
+# Push built images to Container Registry
+images:
+  - 'gcr.io/$PROJECT_ID/french-learning-api'
+  - 'gcr.io/$PROJECT_ID/french-learning-worker'
+
+# Build options
+options:
+  logging: CLOUD_LOGGING_ONLY
+  machineType: 'E2_HIGHCPU_8'

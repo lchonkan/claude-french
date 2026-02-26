@@ -1,0 +1,25 @@
+{
+  "expo": {
+    "name": "Aprende Frances",
+    "slug": "french-learning",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "scheme": "french-learning",
+    "platforms": ["ios", "android"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.frenchlearning.app",
+      "infoPlist": {
+        "NSMicrophoneUsageDescription": "Se necesita acceso al microfono para los ejercicios de pronunciacion."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#1E40AF"
+      },
+      "package": "com.frenchlearning.app",
+      "permissions": ["RECORD_AUDIO"]
+    },
+    "plugins": ["expo-router", "expo-av"]
+  }
+}

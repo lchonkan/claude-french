@@ -1,0 +1,88 @@
+# Cloud Run service configuration for the API (T134)
+#
+# Deploy with:
+#   gcloud run services replace infra/cloud-run/api.yaml --region=europe-west1
+
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: french-learning-api
+  labels:
+    cloud.googleapis.com/location: europe-west1
+  annotations:
+    run.googleapis.com/ingress: all
+    run.googleapis.com/launch-stage: GA
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: "0"
+        autoscaling.knative.dev/maxScale: "10"
+        run.googleapis.com/cpu-throttling: "false"
+        run.googleapis.com/startup-cpu-boost: "true"
+    spec:
+      containerConcurrency: 80
+      timeoutSeconds: 300
+      serviceAccountName: french-learning-api-sa@${PROJECT_ID}.iam.gserviceaccount.com
+      containers:
+        - image: gcr.io/${PROJECT_ID}/french-learning-api:latest
+          ports:
+            - containerPort: 8000
+          resources:
+            limits:
+              cpu: "2"
+              memory: 1Gi
+          env:
+            - name: ENVIRONMENT
+              value: production
+            - name: PORT
+              value: "8000"
+            - name: SUPABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: supabase-url
+                  key: latest
+            - name: SUPABASE_ANON_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: supabase-anon-key
+                  key: latest
+            - name: SUPABASE_SERVICE_ROLE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: supabase-service-role-key
+                  key: latest
+            - name: HF_API_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: hf-api-token
+                  key: latest
+            - name: GOOGLE_GEMINI_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gemini-api-key
+                  key: latest
+            - name: GOOGLE_CLOUD_PROJECT
+              value: ${PROJECT_ID}
+            - name: CLOUD_TASKS_QUEUE
+              value: ai-jobs
+            - name: CLOUD_TASKS_LOCATION
+              value: europe-west1
+            - name: WORKER_SERVICE_URL
+              value: https://french-learning-worker-${PROJECT_HASH}-ew.a.run.app
+          startupProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            periodSeconds: 30
+            failureThreshold: 3
+  traffic:
+    - percent: 100
+      latestRevision: true
