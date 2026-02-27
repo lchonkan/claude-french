@@ -8,7 +8,7 @@
 
 INSERT INTO lessons (id, module, cefr_level, title_es, title_fr, description_es, content, order_index) VALUES
 (
-  'a1000001-list-0001-0001-000000000001',
+  'a1000001-1157-0001-0001-000000000001',
   'listening',
   'A1',
   'En el cafe parisino',
@@ -37,8 +37,8 @@ INSERT INTO lessons (id, module, cefr_level, title_es, title_fr, description_es,
 -- Comprehension questions for Exercise 1
 INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, difficulty_tier, order_index) VALUES
 (
-  'a1000001-lexr-0001-0001-000000000001',
-  'a1000001-list-0001-0001-000000000001',
+  'a1000001-1e34-0001-0001-000000000001',
+  'a1000001-1157-0001-0001-000000000001',
   'multiple_choice',
   'Que pide el cliente para beber?',
   '{
@@ -51,8 +51,8 @@ INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, 
   1, 1
 ),
 (
-  'a1000001-lexr-0001-0002-000000000002',
-  'a1000001-list-0001-0001-000000000001',
+  'a1000001-1e34-0001-0002-000000000002',
+  'a1000001-1157-0001-0001-000000000001',
   'multiple_choice',
   'Que pide el cliente para comer?',
   '{
@@ -65,8 +65,8 @@ INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, 
   1, 2
 ),
 (
-  'a1000001-lexr-0001-0003-000000000003',
-  'a1000001-list-0001-0001-000000000001',
+  'a1000001-1e34-0001-0003-000000000003',
+  'a1000001-1157-0001-0001-000000000001',
   'multiple_choice',
   'Cuanto cuesta el total?',
   '{
@@ -79,8 +79,8 @@ INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, 
   1, 3
 ),
 (
-  'a1000001-lexr-0001-0004-000000000004',
-  'a1000001-list-0001-0001-000000000001',
+  'a1000001-1e34-0001-0004-000000000004',
+  'a1000001-1157-0001-0001-000000000001',
   'multiple_choice',
   'Como se llama el cafe?',
   '{
@@ -99,7 +99,7 @@ INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, 
 
 INSERT INTO lessons (id, module, cefr_level, title_es, title_fr, description_es, content, order_index) VALUES
 (
-  'a1000001-list-0002-0001-000000000002',
+  'a1000001-1157-0002-0001-000000000002',
   'listening',
   'A1',
   'En el metro',
@@ -127,8 +127,8 @@ INSERT INTO lessons (id, module, cefr_level, title_es, title_fr, description_es,
 -- Comprehension questions for Exercise 2
 INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, difficulty_tier, order_index) VALUES
 (
-  'a1000001-lexr-0002-0001-000000000001',
-  'a1000001-list-0002-0001-000000000002',
+  'a1000001-1e34-0002-0001-000000000001',
+  'a1000001-1157-0002-0001-000000000002',
   'multiple_choice',
   'A donde quiere ir el pasajero?',
   '{
@@ -141,8 +141,8 @@ INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, 
   1, 1
 ),
 (
-  'a1000001-lexr-0002-0002-000000000002',
-  'a1000001-list-0002-0001-000000000002',
+  'a1000001-1e34-0002-0002-000000000002',
+  'a1000001-1157-0002-0001-000000000002',
   'multiple_choice',
   'Que linea de metro debe tomar?',
   '{
@@ -155,8 +155,8 @@ INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, 
   1, 2
 ),
 (
-  'a1000001-lexr-0002-0003-000000000003',
-  'a1000001-list-0002-0001-000000000002',
+  'a1000001-1e34-0002-0003-000000000003',
+  'a1000001-1157-0002-0001-000000000002',
   'multiple_choice',
   'Cuantas estaciones son hasta el destino?',
   '{
@@ -175,7 +175,7 @@ INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, 
 
 INSERT INTO lessons (id, module, cefr_level, title_es, title_fr, description_es, content, order_index) VALUES
 (
-  'a1000001-list-0003-0001-000000000003',
+  'a1000001-1157-0003-0001-000000000003',
   'listening',
   'A1',
   'En el mercado',
@@ -205,8 +205,8 @@ INSERT INTO lessons (id, module, cefr_level, title_es, title_fr, description_es,
 -- Comprehension questions for Exercise 3
 INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, difficulty_tier, order_index) VALUES
 (
-  'a1000001-lexr-0003-0001-000000000001',
-  'a1000001-list-0003-0001-000000000003',
+  'a1000001-1e34-0003-0001-000000000001',
+  'a1000001-1157-0003-0001-000000000003',
   'multiple_choice',
   'Cuanto cuestan las manzanas por kilo?',
   '{
@@ -219,8 +219,8 @@ INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, 
   1, 1
 ),
 (
-  'a1000001-lexr-0003-0002-000000000002',
-  'a1000001-list-0003-0001-000000000003',
+  'a1000001-1e34-0003-0002-000000000002',
+  'a1000001-1157-0003-0001-000000000003',
   'multiple_choice',
   'Cuanto de tomates pide la clienta?',
   '{
@@ -233,8 +233,8 @@ INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, 
   1, 2
 ),
 (
-  'a1000001-lexr-0003-0003-000000000003',
-  'a1000001-list-0003-0001-000000000003',
+  'a1000001-1e34-0003-0003-000000000003',
+  'a1000001-1157-0003-0001-000000000003',
   'multiple_choice',
   'Cuanto es el total de la compra?',
   '{
@@ -247,8 +247,8 @@ INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, 
   1, 3
 ),
 (
-  'a1000001-lexr-0003-0004-000000000004',
-  'a1000001-list-0003-0001-000000000003',
+  'a1000001-1e34-0003-0004-000000000004',
+  'a1000001-1157-0003-0001-000000000003',
   'multiple_choice',
   'Cuanto cambio recibe la clienta?',
   '{
@@ -267,7 +267,7 @@ INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, 
 
 INSERT INTO lessons (id, module, cefr_level, title_es, title_fr, description_es, content, order_index) VALUES
 (
-  'a1000001-list-0004-0001-000000000004',
+  'a1000001-1157-0004-0001-000000000004',
   'listening',
   'A1',
   'Las presentaciones',
@@ -297,8 +297,8 @@ INSERT INTO lessons (id, module, cefr_level, title_es, title_fr, description_es,
 -- Comprehension questions for Exercise 4
 INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, difficulty_tier, order_index) VALUES
 (
-  'a1000001-lexr-0004-0001-000000000001',
-  'a1000001-list-0004-0001-000000000004',
+  'a1000001-1e34-0004-0001-000000000001',
+  'a1000001-1157-0004-0001-000000000004',
   'multiple_choice',
   'De donde es Marie?',
   '{
@@ -311,8 +311,8 @@ INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, 
   1, 1
 ),
 (
-  'a1000001-lexr-0004-0002-000000000002',
-  'a1000001-list-0004-0001-000000000004',
+  'a1000001-1e34-0004-0002-000000000002',
+  'a1000001-1157-0004-0001-000000000004',
   'multiple_choice',
   'Que estudia Marie?',
   '{
@@ -325,8 +325,8 @@ INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, 
   1, 2
 ),
 (
-  'a1000001-lexr-0004-0003-000000000003',
-  'a1000001-list-0004-0001-000000000004',
+  'a1000001-1e34-0004-0003-000000000003',
+  'a1000001-1157-0004-0001-000000000004',
   'multiple_choice',
   'Cual es la profesion de Pierre?',
   '{
@@ -339,8 +339,8 @@ INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, 
   1, 3
 ),
 (
-  'a1000001-lexr-0004-0004-000000000004',
-  'a1000001-list-0004-0001-000000000004',
+  'a1000001-1e34-0004-0004-000000000004',
+  'a1000001-1157-0004-0001-000000000004',
   'multiple_choice',
   'Hace cuanto tiempo que Marie vive en Paris?',
   '{
@@ -359,7 +359,7 @@ INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, 
 
 INSERT INTO lessons (id, module, cefr_level, title_es, title_fr, description_es, content, order_index) VALUES
 (
-  'a1000001-list-0005-0001-000000000005',
+  'a1000001-1157-0005-0001-000000000005',
   'listening',
   'A1',
   'En la panaderia',
@@ -389,8 +389,8 @@ INSERT INTO lessons (id, module, cefr_level, title_es, title_fr, description_es,
 -- Comprehension questions for Exercise 5
 INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, difficulty_tier, order_index) VALUES
 (
-  'a1000001-lexr-0005-0001-000000000001',
-  'a1000001-list-0005-0001-000000000005',
+  'a1000001-1e34-0005-0001-000000000001',
+  'a1000001-1157-0005-0001-000000000005',
   'multiple_choice',
   'Que tipo de baguette pide el cliente?',
   '{
@@ -403,8 +403,8 @@ INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, 
   1, 1
 ),
 (
-  'a1000001-lexr-0005-0002-000000000002',
-  'a1000001-list-0005-0001-000000000005',
+  'a1000001-1e34-0005-0002-000000000002',
+  'a1000001-1157-0005-0001-000000000005',
   'multiple_choice',
   'Para quien son los panes de chocolate?',
   '{
@@ -417,8 +417,8 @@ INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, 
   1, 2
 ),
 (
-  'a1000001-lexr-0005-0003-000000000003',
-  'a1000001-list-0005-0001-000000000005',
+  'a1000001-1e34-0005-0003-000000000003',
+  'a1000001-1157-0005-0001-000000000005',
   'multiple_choice',
   'Cuanto cuesta la baguette?',
   '{
@@ -431,8 +431,8 @@ INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, 
   1, 3
 ),
 (
-  'a1000001-lexr-0005-0004-000000000004',
-  'a1000001-list-0005-0001-000000000005',
+  'a1000001-1e34-0005-0004-000000000004',
+  'a1000001-1157-0005-0001-000000000005',
   'multiple_choice',
   'Cuanto es el total?',
   '{

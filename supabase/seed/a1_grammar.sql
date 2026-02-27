@@ -8,7 +8,7 @@
 
 INSERT INTO lessons (id, module, cefr_level, title_es, title_fr, description_es, content, order_index) VALUES
 (
-  'a1000001-gram-0001-0001-000000000001',
+  'a1000001-94a0-0001-0001-000000000001',
   'grammar',
   'A1',
   'Presente de los verbos regulares en -er',
@@ -43,8 +43,8 @@ INSERT INTO lessons (id, module, cefr_level, title_es, title_fr, description_es,
 -- Exercises for Lesson 1
 INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, difficulty_tier, order_index) VALUES
 (
-  'a1000001-exer-0001-0001-000000000001',
-  'a1000001-gram-0001-0001-000000000001',
+  'a1000001-e3e4-0001-0001-000000000001',
+  'a1000001-94a0-0001-0001-000000000001',
   'fill_blank',
   'Completa con la forma correcta del verbo ''parler''.',
   '{
@@ -56,8 +56,8 @@ INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, 
   1, 1
 ),
 (
-  'a1000001-exer-0001-0002-000000000002',
-  'a1000001-gram-0001-0001-000000000001',
+  'a1000001-e3e4-0001-0002-000000000002',
+  'a1000001-94a0-0001-0001-000000000001',
   'fill_blank',
   'Completa con la forma correcta del verbo ''manger''.',
   '{
@@ -69,8 +69,8 @@ INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, 
   2, 2
 ),
 (
-  'a1000001-exer-0001-0003-000000000003',
-  'a1000001-gram-0001-0001-000000000001',
+  'a1000001-e3e4-0001-0003-000000000003',
+  'a1000001-94a0-0001-0001-000000000001',
   'conjugate',
   'Conjuga el verbo ''aimer'' (gustar/amar) en presente para todos los pronombres.',
   '{
@@ -88,8 +88,8 @@ INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, 
   1, 3
 ),
 (
-  'a1000001-exer-0001-0004-000000000004',
-  'a1000001-gram-0001-0001-000000000001',
+  'a1000001-e3e4-0001-0004-000000000004',
+  'a1000001-94a0-0001-0001-000000000001',
   'multiple_choice',
   'Cual es la conjugacion correcta? "Tu ___ une pizza."',
   '{
@@ -102,8 +102,8 @@ INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, 
   1, 4
 ),
 (
-  'a1000001-exer-0001-0005-000000000005',
-  'a1000001-gram-0001-0001-000000000001',
+  'a1000001-e3e4-0001-0005-000000000005',
+  'a1000001-94a0-0001-0001-000000000001',
   'error_correct',
   'Encuentra y corrige el error en la oracion.',
   '{
@@ -116,8 +116,8 @@ INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, 
   2, 5
 ),
 (
-  'a1000001-exer-0001-0006-000000000006',
-  'a1000001-gram-0001-0001-000000000001',
+  'a1000001-e3e4-0001-0006-000000000006',
+  'a1000001-94a0-0001-0001-000000000001',
   'fill_blank',
   'Completa con la forma correcta del verbo ''parler''.',
   '{
@@ -129,8 +129,8 @@ INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, 
   1, 6
 ),
 (
-  'a1000001-exer-0001-0007-000000000007',
-  'a1000001-gram-0001-0001-000000000001',
+  'a1000001-e3e4-0001-0007-000000000007',
+  'a1000001-94a0-0001-0001-000000000001',
   'conjugate',
   'Conjuga el verbo ''parler'' (hablar) en presente para todos los pronombres.',
   '{
@@ -148,8 +148,8 @@ INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, 
   2, 7
 ),
 (
-  'a1000001-exer-0001-0008-000000000008',
-  'a1000001-gram-0001-0001-000000000001',
+  'a1000001-e3e4-0001-0008-000000000008',
+  'a1000001-94a0-0001-0001-000000000001',
   'error_correct',
   'Encuentra y corrige el error en la oracion.',
   '{
@@ -168,7 +168,7 @@ INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, 
 
 INSERT INTO lessons (id, module, cefr_level, title_es, title_fr, description_es, content, order_index) VALUES
 (
-  'a1000001-gram-0002-0001-000000000002',
+  'a1000001-94a0-0002-0001-000000000002',
   'grammar',
   'A1',
   'Los articulos definidos e indefinidos',
@@ -196,8 +196,8 @@ INSERT INTO lessons (id, module, cefr_level, title_es, title_fr, description_es,
 -- Exercises for Lesson 2
 INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, difficulty_tier, order_index) VALUES
 (
-  'a1000001-exer-0002-0001-000000000001',
-  'a1000001-gram-0002-0001-000000000002',
+  'a1000001-e3e4-0002-0001-000000000001',
+  'a1000001-94a0-0002-0001-000000000002',
   'fill_blank',
   'Elige el articulo definido correcto.',
   '{
@@ -209,8 +209,8 @@ INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, 
   1, 1
 ),
 (
-  'a1000001-exer-0002-0002-000000000002',
-  'a1000001-gram-0002-0001-000000000002',
+  'a1000001-e3e4-0002-0002-000000000002',
+  'a1000001-94a0-0002-0001-000000000002',
   'fill_blank',
   'Elige el articulo definido correcto.',
   '{
@@ -222,8 +222,8 @@ INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, 
   1, 2
 ),
 (
-  'a1000001-exer-0002-0003-000000000003',
-  'a1000001-gram-0002-0001-000000000002',
+  'a1000001-e3e4-0002-0003-000000000003',
+  'a1000001-94a0-0002-0001-000000000002',
   'multiple_choice',
   'Cual es el articulo correcto para "ecole" (escuela)?',
   '{
@@ -235,8 +235,8 @@ INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, 
   2, 3
 ),
 (
-  'a1000001-exer-0002-0004-000000000004',
-  'a1000001-gram-0002-0001-000000000002',
+  'a1000001-e3e4-0002-0004-000000000004',
+  'a1000001-94a0-0002-0001-000000000002',
   'fill_blank',
   'Completa con el articulo indefinido correcto.',
   '{
@@ -248,8 +248,8 @@ INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, 
   1, 4
 ),
 (
-  'a1000001-exer-0002-0005-000000000005',
-  'a1000001-gram-0002-0001-000000000002',
+  'a1000001-e3e4-0002-0005-000000000005',
+  'a1000001-94a0-0002-0001-000000000002',
   'error_correct',
   'Encuentra y corrige el error del articulo.',
   '{
@@ -262,8 +262,8 @@ INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, 
   2, 5
 ),
 (
-  'a1000001-exer-0002-0006-000000000006',
-  'a1000001-gram-0002-0001-000000000002',
+  'a1000001-e3e4-0002-0006-000000000006',
+  'a1000001-94a0-0002-0001-000000000002',
   'multiple_choice',
   'Cual es la frase correcta?',
   '{
@@ -280,8 +280,8 @@ INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, 
   2, 6
 ),
 (
-  'a1000001-exer-0002-0007-000000000007',
-  'a1000001-gram-0002-0001-000000000002',
+  'a1000001-e3e4-0002-0007-000000000007',
+  'a1000001-94a0-0002-0001-000000000002',
   'fill_blank',
   'Completa con el articulo indefinido plural.',
   '{
@@ -299,7 +299,7 @@ INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, 
 
 INSERT INTO lessons (id, module, cefr_level, title_es, title_fr, description_es, content, order_index) VALUES
 (
-  'a1000001-gram-0003-0001-000000000003',
+  'a1000001-94a0-0003-0001-000000000003',
   'grammar',
   'A1',
   'Adjetivos basicos: grande/pequeno, bueno/malo',
@@ -329,8 +329,8 @@ INSERT INTO lessons (id, module, cefr_level, title_es, title_fr, description_es,
 -- Exercises for Lesson 3
 INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, difficulty_tier, order_index) VALUES
 (
-  'a1000001-exer-0003-0001-000000000001',
-  'a1000001-gram-0003-0001-000000000003',
+  'a1000001-e3e4-0003-0001-000000000001',
+  'a1000001-94a0-0003-0001-000000000003',
   'fill_blank',
   'Elige la forma correcta del adjetivo.',
   '{
@@ -342,8 +342,8 @@ INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, 
   1, 1
 ),
 (
-  'a1000001-exer-0003-0002-000000000002',
-  'a1000001-gram-0003-0001-000000000003',
+  'a1000001-e3e4-0003-0002-000000000002',
+  'a1000001-94a0-0003-0001-000000000003',
   'fill_blank',
   'Elige la forma correcta del adjetivo.',
   '{
@@ -355,8 +355,8 @@ INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, 
   1, 2
 ),
 (
-  'a1000001-exer-0003-0003-000000000003',
-  'a1000001-gram-0003-0001-000000000003',
+  'a1000001-e3e4-0003-0003-000000000003',
+  'a1000001-94a0-0003-0001-000000000003',
   'multiple_choice',
   'Cual es la forma femenina de "bon"?',
   '{
@@ -368,8 +368,8 @@ INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, 
   1, 3
 ),
 (
-  'a1000001-exer-0003-0004-000000000004',
-  'a1000001-gram-0003-0001-000000000003',
+  'a1000001-e3e4-0003-0004-000000000004',
+  'a1000001-94a0-0003-0001-000000000003',
   'error_correct',
   'Encuentra y corrige el error del adjetivo.',
   '{
@@ -382,8 +382,8 @@ INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, 
   2, 4
 ),
 (
-  'a1000001-exer-0003-0005-000000000005',
-  'a1000001-gram-0003-0001-000000000003',
+  'a1000001-e3e4-0003-0005-000000000005',
+  'a1000001-94a0-0003-0001-000000000003',
   'fill_blank',
   'Completa con la forma correcta de ''mauvais''.',
   '{
@@ -395,8 +395,8 @@ INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, 
   2, 5
 ),
 (
-  'a1000001-exer-0003-0006-000000000006',
-  'a1000001-gram-0003-0001-000000000003',
+  'a1000001-e3e4-0003-0006-000000000006',
+  'a1000001-94a0-0003-0001-000000000003',
   'conjugate',
   'Escribe las cuatro formas del adjetivo ''grand'' (m.s., f.s., m.p., f.p.).',
   '{
@@ -412,8 +412,8 @@ INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, 
   1, 6
 ),
 (
-  'a1000001-exer-0003-0007-000000000007',
-  'a1000001-gram-0003-0001-000000000003',
+  'a1000001-e3e4-0003-0007-000000000007',
+  'a1000001-94a0-0003-0001-000000000003',
   'error_correct',
   'Encuentra y corrige el error del adjetivo.',
   '{
@@ -426,8 +426,8 @@ INSERT INTO lesson_exercises (id, lesson_id, exercise_type, prompt_es, content, 
   2, 7
 ),
 (
-  'a1000001-exer-0003-0008-000000000008',
-  'a1000001-gram-0003-0001-000000000003',
+  'a1000001-e3e4-0003-0008-000000000008',
+  'a1000001-94a0-0003-0001-000000000003',
   'multiple_choice',
   'Elige la oracion correcta.',
   '{

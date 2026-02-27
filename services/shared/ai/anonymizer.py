@@ -42,7 +42,7 @@ _PHONE_RE = re.compile(
 # NOT at the start of a sentence (preceded by ". " or start-of-string).
 # This is deliberately conservative to avoid false positives in French text.
 _NAME_RE = re.compile(
-    r"(?<=[.!?]\s|^)"              # after sentence boundary
+    r"(?<=\s)"                      # after any whitespace
     r"(?!(?:Le|La|Les|Un|Une|Des|Je|Tu|Il|Elle|Nous|Vous|Ils|Elles|On|Ce|Cette|Ces)\b)"
     r"([A-Z][a-z\u00C0-\u00FF]+(?:\s+[A-Z][a-z\u00C0-\u00FF]+){1,3})"
 )

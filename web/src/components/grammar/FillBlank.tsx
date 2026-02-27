@@ -75,7 +75,7 @@ export function FillBlank({
               <span className="mx-1 inline-block min-w-[80px] border-b-2 border-blue-400 text-center text-blue-600">
                 {isAnswered
                   ? result?.correct_answer ?? "___"
-                  : selectedOption ?? textInput || "___"}
+                  : selectedOption ?? (textInput || "___")}
               </span>
             )}
           </span>
