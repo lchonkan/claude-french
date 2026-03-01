@@ -7,7 +7,7 @@
  */
 
 import type { SkillTreeLevel, SkillTreeNode } from "@/services/progress";
-import type { CEFRLevel } from "@/types/cefr";
+
 
 // ---------------------------------------------------------------------------
 // Constants

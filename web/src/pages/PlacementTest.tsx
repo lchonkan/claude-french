@@ -1,9 +1,9 @@
 import { useState, useCallback } from "react";
-import { useIntl } from "react-intl";
+
 import { useNavigate } from "react-router-dom";
 import { Button, Card, ProgressBar, LoadingState, ErrorState } from "@/components/common";
 import type { CEFRLevel } from "@/types/cefr";
-import { CEFR_ORDER } from "@/types/cefr";
+
 import {
   startPlacementTest,
   submitAnswer,
@@ -96,7 +96,6 @@ function SkillBreakdownChart({ skills }: { skills: SkillScore[] }) {
 // ---------------------------------------------------------------------------
 
 export default function PlacementTest() {
-  const intl = useIntl();
   const navigate = useNavigate();
 
   const [phase, setPhase] = useState<Phase>("welcome");

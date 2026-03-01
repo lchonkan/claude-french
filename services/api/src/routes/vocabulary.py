@@ -62,7 +62,7 @@ class ReviewItemOut(BaseModel):
 class ReviewListResponse(BaseModel):
     """Response for the review queue endpoint."""
 
-    items: list[ReviewItemOut]
+    items: list[VocabularyItem]
     total_due: int
     new_available: int
 
@@ -103,7 +103,7 @@ class SimilarItemsResponse(BaseModel):
 
 
 # ---------------------------------------------------------------------------
-# Helper: get Supabase client from request
+# Helper: get Supabase clients from request
 # ---------------------------------------------------------------------------
 
 
@@ -114,6 +114,17 @@ def _get_supabase(request: Request) -> Any:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="Database client not available.",
+        )
+    return supabase
+
+
+def _get_supabase_admin(request: Request) -> Any:
+    """Extract the admin Supabase client from app state."""
+    supabase = getattr(request.app.state, "supabase_admin", None)
+    if supabase is None:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Admin database client not available.",
         )
     return supabase
 
@@ -147,10 +158,12 @@ def _get_hf_client(request: Request) -> Any:
 @router.get(
     "/items",
     response_model=dict[str, VocabularyListResponse],
+    response_model_by_alias=True,
 )
-async def list_vocabulary_items(    request: Request,
-    cefr_level: CEFRLevel = Query(
-        ..., description="CEFR level filter"
+async def list_vocabulary_items(
+    request: Request,
+    cefr_level: CEFRLevel | None = Query(
+        default=None, description="CEFR level filter"
     ),
     limit: int = Query(
         default=50, ge=1, le=200, description="Page size"
@@ -164,15 +177,14 @@ async def list_vocabulary_items(    request: Request,
     user: UserInfo = Depends(get_current_user),
 ) -> dict[str, Any]:
     """List vocabulary items filtered by CEFR level with pagination."""
-    supabase = _get_supabase(request)
+    supabase = _get_supabase_admin(request)
 
     try:
         # Build query
-        query = (
-            supabase.table("vocabulary_items")
-            .select("*", count="exact")
-            .eq("cefr_level", cefr_level.value)
-        )
+        query = supabase.table("vocabulary_items").select("*", count="exact")
+
+        if cefr_level:
+            query = query.eq("cefr_level", cefr_level.value)
 
         # Optional tag filter using PostgreSQL array overlap
         if tags:
@@ -190,6 +202,10 @@ async def list_vocabulary_items(    request: Request,
         result = await query.execute()
 
         items = result.data or []
+        for item in items:
+            if "tags" in item and item["tags"]:
+                item["category"] = item["tags"][0].capitalize()
+
         total = (
             result.count
             if result.count is not None
@@ -222,6 +238,7 @@ async def list_vocabulary_items(    request: Request,
 @router.get(
     "/review",
     response_model=dict[str, ReviewListResponse],
+    response_model_by_alias=True,
 )
 async def get_due_reviews(    request: Request,
     limit: int = Query(
@@ -230,7 +247,7 @@ async def get_due_reviews(    request: Request,
     user: UserInfo = Depends(get_current_user),
 ) -> dict[str, Any]:
     """Get vocabulary items due for SRS review, ordered by due date."""
-    supabase = _get_supabase(request)
+    supabase = _get_supabase_admin(request)
     now = datetime.now(UTC).isoformat()
 
     try:
@@ -286,7 +303,7 @@ async def get_due_reviews(    request: Request,
         new_available = total_items - len(seen_ids)
 
         # Fetch full vocabulary items for the due progress records
-        review_items: list[ReviewItemOut] = []
+        review_items: list[VocabularyItem] = []
         if progress_rows:
             vocab_ids = [
                 row["vocabulary_item_id"] for row in progress_rows
@@ -308,16 +325,13 @@ async def get_due_reviews(    request: Request,
                 )
                 if vocab_data is None:
                     continue
+                
+                # Add category from tags
+                if vocab_data.get("tags") and not vocab_data.get("category"):
+                    vocab_data["category"] = vocab_data["tags"][0].capitalize()
+
                 review_items.append(
-                    ReviewItemOut(
-                        id=prog["id"],
-                        vocabulary_item=VocabularyItem(
-                            **vocab_data
-                        ),
-                        fsrs_due_date=prog["fsrs_due_date"],
-                        review_count=prog["review_count"],
-                        correct_count=prog["correct_count"],
-                    )
+                    VocabularyItem(**vocab_data)
                 )
 
         return {
@@ -345,13 +359,14 @@ async def get_due_reviews(    request: Request,
 @router.post(
     "/review",
     response_model=dict[str, VocabularyReviewResponse],
+    response_model_by_alias=True,
 )
 async def submit_review(    request: Request,
     body: VocabularyReviewRequest,
     user: UserInfo = Depends(get_current_user),
 ) -> dict[str, Any]:
     """Submit a review rating for a vocabulary item, update FSRS."""
-    supabase = _get_supabase(request)
+    supabase = _get_supabase_admin(request)
     now = datetime.now(UTC)
 
     try:
@@ -535,7 +550,7 @@ async def find_similar_items(    request: Request,
     Uses pgvector cosine distance on the ``embedding`` column
     of the ``vocabulary_items`` table.
     """
-    supabase = _get_supabase(request)
+    supabase = _get_supabase_admin(request)
 
     try:
         # Fetch the source item's embedding

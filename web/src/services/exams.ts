@@ -9,7 +9,7 @@
  */
 
 import { apiClient } from "./api";
-import type { CEFRLevel, Skill } from "@/types/cefr";
+import type { CEFRLevel } from "@/types/cefr";
 
 // ---------------------------------------------------------------------------
 // Types

@@ -185,7 +185,6 @@ export default function VocabularyReview() {
     null,
   );
   const [goodOrEasyCount, setGoodOrEasyCount] = useState(0);
-  const [lastNextReview, setLastNextReview] = useState<string | null>(null);
 
   // ---- Data fetching ----
   const {
@@ -199,18 +198,18 @@ export default function VocabularyReview() {
     queryFn: getReviewItems,
   });
 
+  const items = (reviewItems as any)?.data?.items ?? [];
+
   // ---- Mutation ----
   const reviewMutation = useMutation({
     mutationFn: ({ itemId, rating }: { itemId: string; rating: Rating }) =>
       submitReview(itemId, rating),
     onSuccess: (response: ReviewResponse, variables) => {
-      setLastNextReview(response.next_review);
-
       if (variables.rating >= 3) {
         setGoodOrEasyCount((prev) => prev + 1);
       }
 
-      const totalCards = reviewItems?.length ?? 0;
+      const totalCards = items.length;
       const nextIndex = currentIndex + 1;
 
       if (nextIndex >= totalCards) {
@@ -237,18 +236,18 @@ export default function VocabularyReview() {
 
   const handleRate = useCallback(
     (rating: Rating) => {
-      if (!reviewItems) return;
-      const currentItem = reviewItems[currentIndex];
+      if (!items.length) return;
+      const currentItem = items[currentIndex];
       reviewMutation.mutate({ itemId: currentItem.id, rating });
     },
-    [reviewItems, currentIndex, reviewMutation],
+    [items, currentIndex, reviewMutation],
   );
 
   // ---- Derived values ----
-  const totalCards = reviewItems?.length ?? 0;
+  const totalCards = items.length;
   const progressPercent =
     totalCards > 0 ? (currentIndex / totalCards) * 100 : 0;
-  const currentItem = reviewItems?.[currentIndex] ?? null;
+  const currentItem = items[currentIndex] ?? null;
 
   const progressLabel = useMemo(
     () => `${currentIndex + 1} de ${totalCards}`,

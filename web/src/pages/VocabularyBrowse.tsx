@@ -228,8 +228,8 @@ export default function VocabularyBrowse() {
       }),
   });
 
-  const items = paginatedData?.items ?? [];
-  const totalItems = paginatedData?.total ?? 0;
+  const items = (paginatedData as any)?.data?.items ?? [];
+  const totalItems = (paginatedData as any)?.data?.total ?? 0;
   const totalPages = Math.max(1, Math.ceil(totalItems / PAGE_SIZE));
 
   // ---- Handlers ----

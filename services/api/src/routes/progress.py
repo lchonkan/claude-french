@@ -586,7 +586,7 @@ async def get_dashboard(
     user: UserInfo = Depends(get_current_user),
 ) -> dict[str, Any]:
     """Get the learner's full progress dashboard."""
-    supabase = _get_supabase(request)
+    supabase = _get_supabase_admin(request)
 
     try:
         profile = await _get_user_profile(supabase, user.id)
@@ -700,7 +700,7 @@ async def get_mastery(
     user: UserInfo = Depends(get_current_user),
 ) -> dict[str, Any]:
     """Get detailed mastery breakdown per skill for a CEFR level."""
-    supabase = _get_supabase(request)
+    supabase = _get_supabase_admin(request)
 
     try:
         if cefr_level is None:
@@ -739,7 +739,7 @@ async def get_skill_tree(
     user: UserInfo = Depends(get_current_user),
 ) -> dict[str, Any]:
     """Get the visual skill tree data for all CEFR levels."""
-    supabase = _get_supabase(request)
+    supabase = _get_supabase_admin(request)
 
     try:
         profile = await _get_user_profile(supabase, user.id)
@@ -848,7 +848,7 @@ async def get_streak(
     user: UserInfo = Depends(get_current_user),
 ) -> dict[str, Any]:
     """Get streak details and recent history."""
-    supabase = _get_supabase(request)
+    supabase = _get_supabase_admin(request)
 
     try:
         profile = await _get_user_profile(supabase, user.id)
@@ -934,7 +934,7 @@ async def complete_daily_challenge(
     user: UserInfo = Depends(get_current_user),
 ) -> dict[str, Any]:
     """Mark a daily challenge as completed and award XP."""
-    supabase = _get_supabase(request)
+    supabase = _get_supabase_admin(request)
 
     try:
         # Fetch the challenge
@@ -1034,7 +1034,7 @@ async def get_xp_history(
     user: UserInfo = Depends(get_current_user),
 ) -> dict[str, Any]:
     """Get XP transaction history with optional date filtering."""
-    supabase = _get_supabase(request)
+    supabase = _get_supabase_admin(request)
 
     try:
         query = (

@@ -1,4 +1,6 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState, useEffect } from "react";
+import { supabase } from "@/services/api";
+import { Login } from "@/components/Login";
 import {
   BrowserRouter,
   Routes,
@@ -142,6 +144,32 @@ function Sidebar() {
 // ---------------------------------------------------------------------------
 
 export function App() {
+  const [session, setSession] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+      setLoading(false);
+    });
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  if (loading) {
+    return <LoadingState message="Cargando..." skeleton skeletonLines={6} />;
+  }
+
+  if (!session) {
+    return <Login />;
+  }
+
   return (
     <BrowserRouter>
       <div className="flex min-h-screen bg-gray-50">

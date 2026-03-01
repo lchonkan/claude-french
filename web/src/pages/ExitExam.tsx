@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import { useIntl } from "react-intl";
+
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { Button, Card, ProgressBar, LoadingState, ErrorState } from "@/components/common";
 import type { CEFRLevel } from "@/types/cefr";
@@ -95,7 +95,6 @@ function SkillBreakdownChart({ skills }: { skills: SkillScore[] }) {
 // ---------------------------------------------------------------------------
 
 export default function ExitExam() {
-  const intl = useIntl();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 

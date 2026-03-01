@@ -466,7 +466,7 @@ async def list_lessons(
     user: UserInfo = Depends(get_current_user),
 ) -> dict[str, Any]:
     """List lessons for a given module and CEFR level, ordered by index."""
-    supabase = _get_supabase(request)
+    supabase = _get_supabase_admin(request)
 
     try:
         # Fetch lessons
@@ -549,7 +549,7 @@ async def get_lesson(
     user: UserInfo = Depends(get_current_user),
 ) -> dict[str, Any]:
     """Get a single lesson with all its exercises."""
-    supabase = _get_supabase(request)
+    supabase = _get_supabase_admin(request)
 
     try:
         # Fetch lesson
@@ -630,7 +630,7 @@ async def submit_exercise(
     user: UserInfo = Depends(get_current_user),
 ) -> dict[str, Any]:
     """Submit an exercise answer, receive feedback, and track errors."""
-    supabase = _get_supabase(request)
+    supabase = _get_supabase_admin(request)
     supabase_admin = _get_supabase_admin(request)
 
     try:
